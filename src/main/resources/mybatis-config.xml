@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--暂时用不上，锐捷项目组中用的不是这个框架-->
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <package name="com.core.entity"/>
+    </typeAliases>
+</configuration>
