@@ -20,7 +20,7 @@ public class HelloWorldController {
     private IUserService userService;
 
     @RequestMapping(value = "hello")
-    @ResponseBody
+    @ResponseBody//会自动封装成json
     public List<User> hello(){
         User user ;
         user = userService.getUserById(3);
@@ -28,10 +28,5 @@ public class HelloWorldController {
         System.out.println(user.getFirstname());
         return l;
     }
-    @RequestMapping(value = "hello2")
-    @ResponseBody
-    public List<User> hello2(){
-        List<User> users =new ArrayList<User>();
-        return users;
-    }
+
 }
