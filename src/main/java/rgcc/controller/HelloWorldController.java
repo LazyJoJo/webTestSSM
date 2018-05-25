@@ -20,13 +20,19 @@ public class HelloWorldController {
     private IUserService userService;
 
     @RequestMapping(value = "hello")
-    @ResponseBody//会自动封装成json
+    @ResponseBody   //会自动封装成json
     public List<User> hello(){
         User user ;
         user = userService.getUserById(3);
         List<User> l=userService.getUsers();
         System.out.println(user.getFirstname());
         return l;
+    }
+
+    @RequestMapping("hello2")
+    public String hello2(Model model){
+
+        return "helloworld";
     }
 
 }

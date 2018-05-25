@@ -10,7 +10,7 @@ import rgcc.service.IUserService;
 
 import java.util.List;
 
-@Service("userService")
+@Service
 public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;

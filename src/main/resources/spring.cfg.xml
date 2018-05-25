@@ -21,44 +21,12 @@
 	<!-- 开启注解功能 -->
 	<context:annotation-config/>
 
-
-<!--	 spring配置Bean注解注入
-
-
-
-
-	&lt;!&ndash; spring mvc 配置 start &ndash;&gt;
-	<mvc:annotation-driven>
-		<mvc:message-converters register-defaults="true">
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<property name="supportedMediaTypes" value = "text/html;charset=UTF-8" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
-
-	&lt;!&ndash; 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver &ndash;&gt;
+	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8" />
 		<property name="maxUploadSize" value="8500000" />
 	</bean>
-	&lt;!&ndash; 支持json转换 &ndash;&gt;
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<ref bean="jsonConverter" />
-			</list>
-		</property>
-	</bean>
-	<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-		<property name="supportedMediaTypes" value="application/json" />
-	</bean>
 
-	&lt;!&ndash; 如果是拦截所有请求,对静态资源文件的访问方案(默认servlet响应静态资源).注意:不能放Handle配置前面&ndash;&gt;
-	&lt;!&ndash; 即如果找不到url对应的处理servlet,则使用容器的默认servlet处理.不支持访问WEB-INF目录&ndash;&gt;
-	<mvc:default-servlet-handler/>
-
-</beans>-->
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 	<context:component-scan base-package="rgcc.controller" />
 
@@ -82,11 +50,9 @@
 		<property name="supportedMediaTypes" value="application/json" />
 	</bean>
 
-	<mvc:annotation-driven>
-		<mvc:message-converters register-defaults="true">
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<property name="supportedMediaTypes" value = "text/html;charset=UTF-8" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
+	<!--设置配置方案 支持一些注解-->
+	<mvc:annotation-driven />
+
+	<!--对网页中的静态资源进行访问，如js,css,img.....-->
+	<mvc:default-servlet-handler/>
 </beans>
