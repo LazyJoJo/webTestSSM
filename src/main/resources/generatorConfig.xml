@@ -39,6 +39,48 @@
             <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
             <property name="useActualColumnNames" value="false"/>
         </table>
+    </context>
+
+    <context id="context2" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!-- 数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ruijie"
+                        userId="root" password="123456" />
+        <!-- mybatis里专门用来处理NUMERIC和DECIMAL类型的策略 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- 生成entity类的包 和路径 -->
+        <javaModelGenerator targetPackage="com.ruijie.rgcc.entity" targetProject="src\main\java" >
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成Mapper.xml 所在路径下面配置路径为src\main\resources\ibatis-generator -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources" >
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成Dao接口所在包和文件路径 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ruijie.rgcc.dao" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- tableName：表名  domainObjectName：对应数据库表的model类名称-->
+        <table tableName="rgos_svn_message" domainObjectName="SvnMessage" enableCountByExample="false"  enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!-- tableName：表名  domainObjectName：对应数据库表的model类名称-->
+        <table tableName="rgos_p_qualification" domainObjectName="Qualification" enableCountByExample="false"  enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
 
 
     </context>

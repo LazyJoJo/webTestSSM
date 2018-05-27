@@ -8,15 +8,9 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
-
-
   <select id="findAll" resultMap="BaseResultMap">
     select * from users
   </select>
-
-
-
-
   <sql id="Base_Column_List" >
     id, firstname, lastname, phone, email
   </sql>

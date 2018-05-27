@@ -28,22 +28,22 @@
         <property name="username" value="${username}" />
         <property name="password" value="${password}" />
         <!-- 初始化连接大小 -->
-        <property name="initialSize" value="${initialSize}"></property>
+        <property name="initialSize" value="${initialSize}"/>
         <!-- 连接池最大数量 -->
-        <property name="maxActive" value="${maxActive}"></property>
+        <property name="maxActive" value="${maxActive}"/>
         <!-- 连接池最大空闲 -->
-        <property name="maxIdle" value="${maxIdle}"></property>
+        <property name="maxIdle" value="${maxIdle}"/>
         <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="${minIdle}"></property>
+        <property name="minIdle" value="${minIdle}"/>
         <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="${maxWait}"></property>
+        <property name="maxWait" value="${maxWait}"/>
     </bean>
     <!-- end 引入数据库配置文件 -->
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/test/*.xml"/>
     </bean>
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -54,8 +54,46 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+
+    <!--第二个数据库-->
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="com.ruijie.rgcc"/>
+
+
+    <bean id="dataSourceSer" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${service.driver}" />
+        <property name="url" value="${service.url}" />
+        <property name="username" value="${service.username}" />
+        <property name="password" value="${service.password}" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="${initialSize}"/>
+        <!-- 连接池最大数量 -->
+        <property name="maxActive" value="${maxActive}"/>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="${maxIdle}"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${minIdle}"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${maxWait}"/>
+    </bean>
+    <!-- end 引入数据库配置文件 -->
+
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactorySer" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceSer" />
+        <property name="mapperLocations" value="classpath:mapper/ruijie/*.xml"/>
+    </bean>
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ruijie.rgcc.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactorySer"/>
+    </bean>
+    <!-- (事务管理)transactionmanager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManagerSer" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceSer" />
+    </bean>
     <!-- end  spring和MyBatis完美整合 -->
-
-
 
 </beans>

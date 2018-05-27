@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruijie.rgcc.dao.SvnMessageDao" >
+  <resultMap id="BaseResultMap" type="com.ruijie.rgcc.entity.SvnMessage" >
+    <result column="svn_path" property="svnPath" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="file_type" property="fileType" jdbcType="VARCHAR" />
+    <result column="modify_type" property="modifyType" jdbcType="VARCHAR" />
+    <result column="is_file" property="isFile" jdbcType="VARCHAR" />
+    <result column="modify_num" property="modifyNum" jdbcType="VARCHAR" />
+    <result column="all_c_line" property="allCLine" jdbcType="VARCHAR" />
+    <result column="add_c_line" property="addCLine" jdbcType="VARCHAR" />
+    <result column="del_c_line" property="delCLine" jdbcType="VARCHAR" />
+    <result column="all_e_line" property="allELine" jdbcType="VARCHAR" />
+    <result column="add_e_line" property="addELine" jdbcType="VARCHAR" />
+    <result column="del_e_line" property="delELine" jdbcType="VARCHAR" />
+    <result column="all_z_line" property="allZLine" jdbcType="VARCHAR" />
+    <result column="add_z_line" property="addZLine" jdbcType="VARCHAR" />
+    <result column="del_z_line" property="delZLine" jdbcType="VARCHAR" />
+    <result column="group" property="group" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ruijie.rgcc.entity.SvnMessage" >
+    insert into rgos_svn_message (svn_path, file_name, file_type, 
+      modify_type, is_file, modify_num, 
+      all_c_line, add_c_line, del_c_line, 
+      all_e_line, add_e_line, del_e_line, 
+      all_z_line, add_z_line, del_z_line, 
+      group)
+    values (#{svnPath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{fileType,jdbcType=VARCHAR}, 
+      #{modifyType,jdbcType=VARCHAR}, #{isFile,jdbcType=VARCHAR}, #{modifyNum,jdbcType=VARCHAR}, 
+      #{allCLine,jdbcType=VARCHAR}, #{addCLine,jdbcType=VARCHAR}, #{delCLine,jdbcType=VARCHAR}, 
+      #{allELine,jdbcType=VARCHAR}, #{addELine,jdbcType=VARCHAR}, #{delELine,jdbcType=VARCHAR}, 
+      #{allZLine,jdbcType=VARCHAR}, #{addZLine,jdbcType=VARCHAR}, #{delZLine,jdbcType=VARCHAR}, 
+      #{group,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ruijie.rgcc.entity.SvnMessage" >
+    insert into rgos_svn_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svnPath != null" >
+        svn_path,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="fileType != null" >
+        file_type,
+      </if>
+      <if test="modifyType != null" >
+        modify_type,
+      </if>
+      <if test="isFile != null" >
+        is_file,
+      </if>
+      <if test="modifyNum != null" >
+        modify_num,
+      </if>
+      <if test="allCLine != null" >
+        all_c_line,
+      </if>
+      <if test="addCLine != null" >
+        add_c_line,
+      </if>
+      <if test="delCLine != null" >
+        del_c_line,
+      </if>
+      <if test="allELine != null" >
+        all_e_line,
+      </if>
+      <if test="addELine != null" >
+        add_e_line,
+      </if>
+      <if test="delELine != null" >
+        del_e_line,
+      </if>
+      <if test="allZLine != null" >
+        all_z_line,
+      </if>
+      <if test="addZLine != null" >
+        add_z_line,
+      </if>
+      <if test="delZLine != null" >
+        del_z_line,
+      </if>
+      <if test="group != null" >
+        group,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svnPath != null" >
+        #{svnPath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyType != null" >
+        #{modifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="isFile != null" >
+        #{isFile,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyNum != null" >
+        #{modifyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="allCLine != null" >
+        #{allCLine,jdbcType=VARCHAR},
+      </if>
+      <if test="addCLine != null" >
+        #{addCLine,jdbcType=VARCHAR},
+      </if>
+      <if test="delCLine != null" >
+        #{delCLine,jdbcType=VARCHAR},
+      </if>
+      <if test="allELine != null" >
+        #{allELine,jdbcType=VARCHAR},
+      </if>
+      <if test="addELine != null" >
+        #{addELine,jdbcType=VARCHAR},
+      </if>
+      <if test="delELine != null" >
+        #{delELine,jdbcType=VARCHAR},
+      </if>
+      <if test="allZLine != null" >
+        #{allZLine,jdbcType=VARCHAR},
+      </if>
+      <if test="addZLine != null" >
+        #{addZLine,jdbcType=VARCHAR},
+      </if>
+      <if test="delZLine != null" >
+        #{delZLine,jdbcType=VARCHAR},
+      </if>
+      <if test="group != null" >
+        #{group,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

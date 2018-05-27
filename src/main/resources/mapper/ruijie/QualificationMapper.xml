@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruijie.rgcc.dao.QualificationDao" >
+  <resultMap id="BaseResultMap" type="com.ruijie.rgcc.entity.Qualification" >
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="cur_qual" property="curQual" jdbcType="VARCHAR" />
+    <result column="pre_qual" property="preQual" jdbcType="VARCHAR" />
+    <result column="q1_qual" property="q1Qual" jdbcType="VARCHAR" />
+    <result column="q2_qual" property="q2Qual" jdbcType="VARCHAR" />
+    <result column="q3_qual" property="q3Qual" jdbcType="VARCHAR" />
+    <result column="q4_qual" property="q4Qual" jdbcType="VARCHAR" />
+    <result column="q1_true_qual" property="q1TrueQual" jdbcType="VARCHAR" />
+    <result column="q2_true_qual" property="q2TrueQual" jdbcType="VARCHAR" />
+    <result column="q3_true_qual" property="q3TrueQual" jdbcType="VARCHAR" />
+    <result column="q4_true_qual" property="q4TrueQual" jdbcType="VARCHAR" />
+    <result column="qual_file_name" property="qualFileName" jdbcType="VARCHAR" />
+    <result column="qual_file_num" property="qualFileNum" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from rgos_p_qualification
+  </select>
+
+  <insert id="insert" parameterType="com.ruijie.rgcc.entity.Qualification" >
+    insert into rgos_p_qualification (user_name, group_name, department, 
+      cur_qual, pre_qual, q1_qual, 
+      q2_qual, q3_qual, q4_qual, 
+      q1_true_qual, q2_true_qual, q3_true_qual, 
+      q4_true_qual, qual_file_name, qual_file_num
+      )
+    values (#{userName,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{curQual,jdbcType=VARCHAR}, #{preQual,jdbcType=VARCHAR}, #{q1Qual,jdbcType=VARCHAR}, 
+      #{q2Qual,jdbcType=VARCHAR}, #{q3Qual,jdbcType=VARCHAR}, #{q4Qual,jdbcType=VARCHAR}, 
+      #{q1TrueQual,jdbcType=VARCHAR}, #{q2TrueQual,jdbcType=VARCHAR}, #{q3TrueQual,jdbcType=VARCHAR}, 
+      #{q4TrueQual,jdbcType=VARCHAR}, #{qualFileName,jdbcType=VARCHAR}, #{qualFileNum,jdbcType=VARCHAR}
+      )
+  </insert>
+
+</mapper>
