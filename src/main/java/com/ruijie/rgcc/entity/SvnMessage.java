@@ -1,38 +1,122 @@
 package com.ruijie.rgcc.entity;
-
+/**
+ * <p>Title: SvnMessage </p>
+ * <p>Description: svn库数据信息实体类 </p>
+ * <p>Copyright: Copyright (c) 2018 </p>
+ * <p>Company: Ruijie Co., Ltd. </p>
+ * <p>Create Time: 2018/5/26 </p>
+ * @author zhengchengbin
+ * <p>Update Time: </p>
+ * <p>Updater: </p>
+ * <p>Update Comments: </p>
+ */
 public class SvnMessage {
+
+    /**
+     * svn路径
+     */
     private String svnPath;
 
+    /**
+     * 文件名称
+     */
     private String fileName;
 
+    /**
+     * 文件类型
+     */
     private String fileType;
 
+    /**
+     * 代码修改类型
+     */
     private String modifyType;
 
+    /**
+     * 是否是文件
+     */
     private String isFile;
 
+    /**
+     * 代码修改数量
+     */
     private String modifyNum;
 
+    /**
+     * 总变化条数
+     */
     private String allCLine;
 
+    /**
+     * 增加条数
+     */
     private String addCLine;
 
+    /**
+     * 删除条数
+     */
     private String delCLine;
 
+    /**
+     * 总空行数
+     */
     private String allELine;
 
+    /**
+     * 增加空行数
+     */
     private String addELine;
 
+    /**
+     * 删除空行数
+     */
     private String delELine;
 
+    /**
+     * 总注释行数
+     */
     private String allZLine;
 
+    /**
+     * 增加注释行数
+     */
     private String addZLine;
 
+    /**
+     * 删除注释行数
+     */
     private String delZLine;
 
+    /**
+     * 专业组
+     */
     private String group;
 
+    /**
+     * constructor
+     */
+    public SvnMessage() {
+        this.svnPath = "";
+        this.fileName = "";
+        this.fileType = "";
+        this.modifyType = "";
+        this.isFile = "";
+        this.modifyNum = "";
+        this.allCLine = "";
+        this.addCLine = "";
+        this.delCLine = "";
+        this.allELine = "";
+        this.addELine = "";
+        this.delELine = "";
+        this.allZLine = "";
+        this.addZLine = "";
+        this.delZLine = "";
+        this.group = "";
+    }
+
+    /**
+     * getter and setter
+     */
     public String getSvnPath() {
         return svnPath;
     }

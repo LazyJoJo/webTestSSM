@@ -1,36 +1,136 @@
 package com.ruijie.rgcc.entity;
-
+/**
+ * <p>Title: Qualification </p>
+ * <p>Description: 人员资质数据实体类 </p>
+ * <p>Copyright: Copyright (c) 2018 </p>
+ * <p>Company: Ruijie Co., Ltd. </p>
+ * <p>Create Time: 2018/5/24 </p>
+ * @author zhengchengbin
+ * <p>Update Time: </p>
+ * <p>Updater: </p>
+ * <p>Update Comments: </p>
+ */
 public class Qualification {
+    /**
+     * 用户名
+     */
     private String userName;
 
+    /**
+     * 小组名称
+     */
     private String groupName;
 
+    /**
+     * 部门名称
+     */
     private String department;
 
+    /**
+     * 当前资质
+     */
     private String curQual;
 
+    /**
+     * 年初资质
+     */
     private String preQual;
 
+    /**
+     * Q1目标资质
+     */
     private String q1Qual;
 
+    /**
+     * Q2目标资质
+     */
     private String q2Qual;
 
+    /**
+     * Q3目标资质
+     */
     private String q3Qual;
 
+    /**
+     * Q4目标资质
+     */
     private String q4Qual;
 
+    /**
+     * Q1实际资质
+     */
     private String q1TrueQual;
 
+    /**
+     * Q2实际资质
+     */
     private String q2TrueQual;
 
+    /**
+     * Q3实际资质
+     */
     private String q3TrueQual;
 
+    /**
+     * Q3实际资质
+     */
     private String q4TrueQual;
 
+    /**
+     * 资质文档名称
+     */
     private String qualFileName;
 
+    /**
+     * 资质文档数量
+     */
     private String qualFileNum;
 
+    /**
+     * constructor
+     */
+    public Qualification() {
+        this.userName = "";
+        this.groupName = "";
+        this.department = "";
+        this.curQual = "";
+        this.preQual = "";
+        this.q1Qual = "";
+        this.q2Qual = "";
+        this.q3Qual = "";
+        this.q4Qual = "";
+        this.q1TrueQual = "";
+        this.q2TrueQual = "";
+        this.q3TrueQual = "";
+        this.q4TrueQual = "";
+        this.qualFileName = "";
+        this.qualFileNum = "";
+    }
+
+    public Qualification(String userName, String groupName, String department, String curQual, String preQual,
+                         String q1Qual, String q2Qual, String q3Qual, String q4Qual, String q1TrueQual,
+                         String q2TrueQual, String q3TrueQual, String q4TrueQual, String qualFileName,
+                         String qualFileNum) {
+        this.userName = userName;
+        this.groupName = groupName;
+        this.department = department;
+        this.curQual = curQual;
+        this.preQual = preQual;
+        this.q1Qual = q1Qual;
+        this.q2Qual = q2Qual;
+        this.q3Qual = q3Qual;
+        this.q4Qual = q4Qual;
+        this.q1TrueQual = q1TrueQual;
+        this.q2TrueQual = q2TrueQual;
+        this.q3TrueQual = q3TrueQual;
+        this.q4TrueQual = q4TrueQual;
+        this.qualFileName = qualFileName;
+        this.qualFileNum = qualFileNum;
+    }
+
+    /**
+     * getter and setter
+     */
     public String getUserName() {
         return userName;
     }
