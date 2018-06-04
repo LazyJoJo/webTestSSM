@@ -6,6 +6,7 @@ package com.ruijie.rgcc.entity;
  * <p>Copyright: Copyright (c) 2018 </p>
  * <p>Company: Ruijie Co., Ltd. </p>
  * <p>Create Time: 2018/5/25 </p>
+ *
  * @author zhengchengbin
  * <p>Update Time: </p>
  * <p>Updater: </p>
@@ -16,22 +17,22 @@ public class ResMngRecordInfo {
     /**
      * 工作周ID
      */
-    private String week_id;
+    private String weekId;
 
     /**
      * 用户ID
      */
-    private String user_id;
+    private String userId;
 
     /**
      * 用户名称
      */
-    private String user_info_name;
+    private String userInfoName;
 
     /**
      * 专业组名称
      */
-    private String group_name;
+    private String groupName;
 
     /**
      * 部门名称
@@ -41,32 +42,32 @@ public class ResMngRecordInfo {
     /**
      * 事业部名称
      */
-    private String Business_dep;
+    private String BusinessDep;
 
     /**
      * 任务名称
      */
-    private String task_name;
+    private String taskName;
 
     /**
      * 任务目标
      */
-    private String task_target;
+    private String taskTarget;
 
     /**
      * 专用产品
      */
-    private String specific_produce;
+    private String specificProduce;
 
     /**
      * 产品评价
      */
-    private String produce_evaluation;
+    private String produceEvaluation;
 
     /**
      * 任务完成数量
      */
-    private String task_complete;
+    private String taskComplete;
 
     /**
      * 标记
@@ -76,87 +77,87 @@ public class ResMngRecordInfo {
     /**
      * 工作时长
      */
-    private String work_time;
+    private String workTime;
 
     /**
      * 加班时长
      */
-    private String add_time;
+    private String addTime;
 
     /**
      * 总时长
      */
-    private String Total_time;
+    private String TotalTime;
 
     /**
      * 工作项目类型编号
      */
-    private String work_class_id;
+    private String workClassId;
 
     /**
      * 项目类型名称
      */
-    private String work_class_name;
+    private String workClassName;
 
     /**
      * 项目编号
      */
-    private String res_project_id;
+    private String resProjectId;
 
     /**
      * 项目名称
      */
-    private String res_project_name;
+    private String resProjectName;
 
     /**
      * 工作库ID
      */
-    private String res_work_pack_id;
+    private String resWorkPackId;
 
     /**
      * 工作库名
      */
-    private String res_work_pack_name;
+    private String resWorkPackName;
 
     /**
      * 测试类型ID
      */
-    private String res_task_class_id;
+    private String resTaskClassId;
 
     /**
      * 测试类型名称
      */
-    private String res_task_class_name;
+    private String resTaskClassName;
 
     /**
      * 平台ID
      */
-    private String res_for_dicision_id;
+    private String resForDicisionId;
 
     /**
      * 平台名称
      */
-    private String res_for_dicision_name;
+    private String resForDicisionName;
 
     /**
      * 优先级ID
      */
-    private String res_priority_id;
+    private String resPriorityId;
 
     /**
      * 优先级名称
      */
-    private String res_priority_name;
+    private String resPriorityName;
 
     /**
      * 开始周时间
      */
-    private String res_week_start_date;
+    private String resWeekStartDate;
 
     /**
      * 结束周时间
      */
-    private String res_week_end_date;
+    private String resWeekEndDate;
 
     /**
      * 周时间
@@ -167,71 +168,71 @@ public class ResMngRecordInfo {
      * constructor
      */
     public ResMngRecordInfo() {
-        this.week_id = "";
-        this.user_id = "";
-        this.user_info_name = "";
-        this.group_name = "";
+        this.weekId = "";
+        this.userId = "";
+        this.userInfoName = "";
+        this.groupName = "";
         this.department = "";
-        this.Business_dep = "";
-        this.task_name = "";
-        this.task_target = "";
-        this.specific_produce = "";
-        this.produce_evaluation = "";
-        this.task_complete = "";
+        this.BusinessDep = "";
+        this.taskName = "";
+        this.taskTarget = "";
+        this.specificProduce = "";
+        this.produceEvaluation = "";
+        this.taskComplete = "";
         this.remarks = "";
-        this.work_time = "";
-        this.add_time = "";
-        this.Total_time = "";
-        this.work_class_id = "";
-        this.work_class_name = "";
-        this.res_project_id = "";
-        this.res_project_name = "";
-        this.res_work_pack_id = "";
-        this.res_work_pack_name = "";
-        this.res_task_class_id = "";
-        this.res_task_class_name = "";
-        this.res_for_dicision_id = "";
-        this.res_for_dicision_name = "";
-        this.res_priority_id = "";
-        this.res_priority_name = "";
-        this.res_week_start_date = "";
-        this.res_week_end_date = "";
+        this.workTime = "";
+        this.addTime = "";
+        this.TotalTime = "";
+        this.workClassId = "";
+        this.workClassName = "";
+        this.resProjectId = "";
+        this.resProjectName = "";
+        this.resWorkPackId = "";
+        this.resWorkPackName = "";
+        this.resTaskClassId = "";
+        this.resTaskClassName = "";
+        this.resForDicisionId = "";
+        this.resForDicisionName = "";
+        this.resPriorityId = "";
+        this.resPriorityName = "";
+        this.resWeekStartDate = "";
+        this.resWeekEndDate = "";
         this.week = "";
     }
 
     /**
      * getter and setter
      */
-    public String getWeek_id() {
-        return week_id;
+    public String getWeekId() {
+        return weekId;
     }
 
-    public void setWeek_id(String week_id) {
-        this.week_id = week_id;
+    public void setWeekId(String weekId) {
+        this.weekId = weekId;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getUser_info_name() {
-        return user_info_name;
+    public String getUserInfoName() {
+        return userInfoName;
     }
 
-    public void setUser_info_name(String user_info_name) {
-        this.user_info_name = user_info_name;
+    public void setUserInfoName(String userInfoName) {
+        this.userInfoName = userInfoName;
     }
 
-    public String getGroup_name() {
-        return group_name;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroup_name(String group_name) {
-        this.group_name = group_name;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public String getDepartment() {
@@ -242,52 +243,52 @@ public class ResMngRecordInfo {
         this.department = department;
     }
 
-    public String getBusiness_dep() {
-        return Business_dep;
+    public String getBusinessDep() {
+        return BusinessDep;
     }
 
-    public void setBusiness_dep(String business_dep) {
-        Business_dep = business_dep;
+    public void setBusinessDep(String businessDep) {
+        BusinessDep = businessDep;
     }
 
-    public String getTask_name() {
-        return task_name;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTask_name(String task_name) {
-        this.task_name = task_name;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
-    public String getTask_target() {
-        return task_target;
+    public String getTaskTarget() {
+        return taskTarget;
     }
 
-    public void setTask_target(String task_target) {
-        this.task_target = task_target;
+    public void setTaskTarget(String taskTarget) {
+        this.taskTarget = taskTarget;
     }
 
-    public String getSpecific_produce() {
-        return specific_produce;
+    public String getSpecificProduce() {
+        return specificProduce;
     }
 
-    public void setSpecific_produce(String specific_produce) {
-        this.specific_produce = specific_produce;
+    public void setSpecificProduce(String specificProduce) {
+        this.specificProduce = specificProduce;
     }
 
-    public String getProduce_evaluation() {
-        return produce_evaluation;
+    public String getProduceEvaluation() {
+        return produceEvaluation;
     }
 
-    public void setProduce_evaluation(String produce_evaluation) {
-        this.produce_evaluation = produce_evaluation;
+    public void setProduceEvaluation(String produceEvaluation) {
+        this.produceEvaluation = produceEvaluation;
     }
 
-    public String getTask_complete() {
-        return task_complete;
+    public String getTaskComplete() {
+        return taskComplete;
     }
 
-    public void setTask_complete(String task_complete) {
-        this.task_complete = task_complete;
+    public void setTaskComplete(String taskComplete) {
+        this.taskComplete = taskComplete;
     }
 
     public String getRemarks() {
@@ -298,140 +299,140 @@ public class ResMngRecordInfo {
         this.remarks = remarks;
     }
 
-    public String getWork_time() {
-        return work_time;
+    public String getWorkTime() {
+        return workTime;
     }
 
-    public void setWork_time(String work_time) {
-        this.work_time = work_time;
+    public void setWorkTime(String workTime) {
+        this.workTime = workTime;
     }
 
-    public String getAdd_time() {
-        return add_time;
+    public String getAddTime() {
+        return addTime;
     }
 
-    public void setAdd_time(String add_time) {
-        this.add_time = add_time;
+    public void setAddTime(String addTime) {
+        this.addTime = addTime;
     }
 
-    public String getTotal_time() {
-        return Total_time;
+    public String getTotalTime() {
+        return TotalTime;
     }
 
-    public void setTotal_time(String total_time) {
-        Total_time = total_time;
+    public void setTotalTime(String totalTime) {
+        TotalTime = totalTime;
     }
 
-    public String getWork_class_id() {
-        return work_class_id;
+    public String getWorkClassId() {
+        return workClassId;
     }
 
-    public void setWork_class_id(String work_class_id) {
-        this.work_class_id = work_class_id;
+    public void setWorkClassId(String workClassId) {
+        this.workClassId = workClassId;
     }
 
-    public String getWork_class_name() {
-        return work_class_name;
+    public String getWorkClassName() {
+        return workClassName;
     }
 
-    public void setWork_class_name(String work_class_name) {
-        this.work_class_name = work_class_name;
+    public void setWorkClassName(String workClassName) {
+        this.workClassName = workClassName;
     }
 
-    public String getRes_project_id() {
-        return res_project_id;
+    public String getResProjectId() {
+        return resProjectId;
     }
 
-    public void setRes_project_id(String res_project_id) {
-        this.res_project_id = res_project_id;
+    public void setResProjectId(String resProjectId) {
+        this.resProjectId = resProjectId;
     }
 
-    public String getRes_project_name() {
-        return res_project_name;
+    public String getResProjectName() {
+        return resProjectName;
     }
 
-    public void setRes_project_name(String res_project_name) {
-        this.res_project_name = res_project_name;
+    public void setResProjectName(String resProjectName) {
+        this.resProjectName = resProjectName;
     }
 
-    public String getRes_work_pack_id() {
-        return res_work_pack_id;
+    public String getResWorkPackId() {
+        return resWorkPackId;
     }
 
-    public void setRes_work_pack_id(String res_work_pack_id) {
-        this.res_work_pack_id = res_work_pack_id;
+    public void setResWorkPackId(String resWorkPackId) {
+        this.resWorkPackId = resWorkPackId;
     }
 
-    public String getRes_work_pack_name() {
-        return res_work_pack_name;
+    public String getResWorkPackName() {
+        return resWorkPackName;
     }
 
-    public void setRes_work_pack_name(String res_work_pack_name) {
-        this.res_work_pack_name = res_work_pack_name;
+    public void setResWorkPackName(String resWorkPackName) {
+        this.resWorkPackName = resWorkPackName;
     }
 
-    public String getRes_task_class_id() {
-        return res_task_class_id;
+    public String getResTaskClassId() {
+        return resTaskClassId;
     }
 
-    public void setRes_task_class_id(String res_task_class_id) {
-        this.res_task_class_id = res_task_class_id;
+    public void setResTaskClassId(String resTaskClassId) {
+        this.resTaskClassId = resTaskClassId;
     }
 
-    public String getRes_task_class_name() {
-        return res_task_class_name;
+    public String getResTaskClassName() {
+        return resTaskClassName;
     }
 
-    public void setRes_task_class_name(String res_task_class_name) {
-        this.res_task_class_name = res_task_class_name;
+    public void setResTaskClassName(String resTaskClassName) {
+        this.resTaskClassName = resTaskClassName;
     }
 
-    public String getRes_for_dicision_id() {
-        return res_for_dicision_id;
+    public String getResForDicisionId() {
+        return resForDicisionId;
     }
 
-    public void setRes_for_dicision_id(String res_for_dicision_id) {
-        this.res_for_dicision_id = res_for_dicision_id;
+    public void setResForDicisionId(String resForDicisionId) {
+        this.resForDicisionId = resForDicisionId;
     }
 
-    public String getRes_for_dicision_name() {
-        return res_for_dicision_name;
+    public String getResForDicisionName() {
+        return resForDicisionName;
     }
 
-    public void setRes_for_dicision_name(String res_for_dicision_name) {
-        this.res_for_dicision_name = res_for_dicision_name;
+    public void setResForDicisionName(String resForDicisionName) {
+        this.resForDicisionName = resForDicisionName;
     }
 
-    public String getRes_priority_id() {
-        return res_priority_id;
+    public String getResPriorityId() {
+        return resPriorityId;
     }
 
-    public void setRes_priority_id(String res_priority_id) {
-        this.res_priority_id = res_priority_id;
+    public void setResPriorityId(String resPriorityId) {
+        this.resPriorityId = resPriorityId;
     }
 
-    public String getRes_priority_name() {
-        return res_priority_name;
+    public String getResPriorityName() {
+        return resPriorityName;
     }
 
-    public void setRes_priority_name(String res_priority_name) {
-        this.res_priority_name = res_priority_name;
+    public void setResPriorityName(String resPriorityName) {
+        this.resPriorityName = resPriorityName;
     }
 
-    public String getRes_week_start_date() {
-        return res_week_start_date;
+    public String getResWeekStartDate() {
+        return resWeekStartDate;
     }
 
-    public void setRes_week_start_date(String res_week_start_date) {
-        this.res_week_start_date = res_week_start_date;
+    public void setResWeekStartDate(String resWeekStartDate) {
+        this.resWeekStartDate = resWeekStartDate;
     }
 
-    public String getRes_week_end_date() {
-        return res_week_end_date;
+    public String getResWeekEndDate() {
+        return resWeekEndDate;
     }
 
-    public void setRes_week_end_date(String res_week_end_date) {
-        this.res_week_end_date = res_week_end_date;
+    public void setResWeekEndDate(String resWeekEndDate) {
+        this.resWeekEndDate = resWeekEndDate;
     }
 
     public String getWeek() {

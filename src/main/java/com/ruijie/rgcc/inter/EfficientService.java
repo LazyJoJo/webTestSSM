@@ -9,21 +9,32 @@ import com.ruijie.rgcc.entity.EasyuiResult;
 import net.sf.json.JSONObject;
 
 import java.util.List;
-
+/**
+ * <p>Title: EfficientService </p>
+ * <p>Description: EfficientService 接口类</p>
+ * <p>Copyright: Copyright (c) 2018 </p>
+ * <p>Company: Ruijie Co., Ltd. </p>
+ * <p>Create Time: 2018/6/3 </p>
+ *
+ * @author zhengchengbin
+ * <p>Update Time: </p>
+ * <p>Updater: </p>
+ * <p>Update Comments: </p>
+ */
 public interface EfficientService {
-    List<Qualification> getAll();
 
-    List<ResMngRecordInfo> findUserGroupDeptInfo();
+    public List<Qualification> getAll();
 
-    List<ResMngRecordInfo> getPatformResRecord();
+    public List<ResMngRecordInfo> findUserGroupDeptInfo();
 
-    List<JSONObject> getCodeLineInfo(String querytype, ResMngRecordInfo resMngRecordInfo);
+    public List<JSONObject> getCodeLineInfo(String queryType, ResMngRecordInfo resMngRecordInfo);
 
-    List<CafCodeInfo> getEachPersonByProject(String timeS, String timeE, String project);
+    public List<CafCodeInfo> getEachPersonByProject(String timeStart, String timeEnd, String project);
 
-    List<SvnMessage> getCodeLineBySvn(String timeS, String timeE, String type);
+    public List<SvnMessage> getCodeLineBySvn(String timeStart, String timeEnd, String type);
 
-    String updateQualification(Qualification qualification);
+    public String updateQualification(Qualification qualification);
 
-    EasyuiResult getQualification(String dept, String group, String username, String type, int pageSize, int pageNum);
+    public EasyuiResult getQualification(String dept, String group, String userName, String type,
+                                         int pageSize, int pageNum);
 }

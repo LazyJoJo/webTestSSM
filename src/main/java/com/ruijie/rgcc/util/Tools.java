@@ -9,6 +9,7 @@ import java.util.Date;
  * <p>Copyright: Copyright (c) 2018 </p>
  * <p>Company: Ruijie Co., Ltd. </p>
  * <p>Create Time: 2018/5/28 </p>
+ *
  * @author zhengchengbin
  * <p>Update Time: </p>
  * <p>Updater: </p>
@@ -25,11 +26,11 @@ public class Tools {
      */
     public static boolean timeCompare(String applyTime, String timeStart, String timeEnd) {
         boolean flag = false;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date appTime = simpleDateFormat.parse(applyTime.toString());
-            Date dateStartTmp = simpleDateFormat.parse(timeStart.toString());
-            Date dateEndTmp= simpleDateFormat.parse(timeEnd.toString());
+            Date appTime = simpleDateFormat.parse(applyTime);
+            Date dateStartTmp = simpleDateFormat.parse(timeStart);
+            Date dateEndTmp= simpleDateFormat.parse(timeEnd);
             if (appTime.getTime() >=dateStartTmp.getTime() && appTime.getTime() <= dateEndTmp.getTime()) {
                 flag = true;
             }

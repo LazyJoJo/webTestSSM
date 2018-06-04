@@ -24,6 +24,7 @@ import net.sf.json.JSONObject;
  * <p>Copyright: Copyright (c) 2018 </p>
  * <p>Company: Ruijie Co., Ltd. </p>
  * <p>Create Time: 2018/5/28 </p>
+ *
  * @author zhengchengbin
  * <p>Update Time: </p>
  * <p>Updater: </p>
@@ -32,8 +33,11 @@ import net.sf.json.JSONObject;
 @Controller
 @RequestMapping(value = "/efficient")
 public class EfficientController {
+    /**
+     *  EfficientService
+     */
     @Resource
-    private EfficientService EfficientService;
+    private EfficientService efficientService;
 
     /**
      * <p>Description: 获取每个人代码量</p>
@@ -46,12 +50,12 @@ public class EfficientController {
     @RequestMapping(value = "/getEachPersonCodeLine", method = RequestMethod.POST)
     @ResponseBody
     public List<CafCodeInfo> getEachPersonCodeLine(HttpServletRequest httpServletRequest) {
-        List<CafCodeInfo> cafCodeList = new ArrayList<CafCodeInfo>();
-        String timeS = httpServletRequest.getParameter("timeS");
-        String timeE = httpServletRequest.getParameter("timeE");
+        List<CafCodeInfo> cafCodeInfos = new ArrayList<CafCodeInfo>();
+        String timeStart = httpServletRequest.getParameter("timeS");
+        String timeEnd = httpServletRequest.getParameter("timeE");
         String project = httpServletRequest.getParameter("project");
-        cafCodeList = EfficientService.getEachPersonByProject(timeS, timeE, project);
-        return cafCodeList;
+        cafCodeInfos = efficientService.getEachPersonByProject(timeStart, timeEnd, project);
+        return cafCodeInfos;
     }
 
     /**
@@ -65,12 +69,12 @@ public class EfficientController {
     @RequestMapping(value = "/getCodeLineBySvn", method = RequestMethod.POST)
     @ResponseBody
     public Object getcodelineBysvn(HttpServletRequest httpServletRequest) {
-        List<SvnMessage> svnMessagesList = new ArrayList<SvnMessage>();
+        List<SvnMessage> svnMessages = new ArrayList<SvnMessage>();
         String timeStart = httpServletRequest.getParameter("timeS");
         String timeEnd = httpServletRequest.getParameter("timeE");
         String type = httpServletRequest.getParameter("type");
-        svnMessagesList = EfficientService.getCodeLineBySvn(timeStart, timeEnd, type);
-        return svnMessagesList;
+        svnMessages = efficientService.getCodeLineBySvn(timeStart, timeEnd, type);
+        return svnMessages;
     }
 
     /**
@@ -83,7 +87,7 @@ public class EfficientController {
      */
     @RequestMapping(value = "/getCodeLineInfo", method = RequestMethod.POST)
     public List<JSONObject> getCodeLineInfo(HttpServletRequest httpServletRequest) {
-        List<JSONObject> jsonList = new ArrayList<JSONObject>();
+        List<JSONObject> jsonObjects = new ArrayList<JSONObject>();
         String year = httpServletRequest.getParameter("year");
         String project = httpServletRequest.getParameter("project");
         String timeStart = httpServletRequest.getParameter("timeS");
@@ -100,16 +104,15 @@ public class EfficientController {
             timeStart = "01-01";
         }
         ResMngRecordInfo resMngRecordInfo = new ResMngRecordInfo();
-        resMngRecordInfo.setRes_project_name(project);
-        resMngRecordInfo.setRes_week_start_date(year + "-" + timeStart);
-        resMngRecordInfo.setRes_week_end_date(year + "-" + timeEnd);
+        resMngRecordInfo.setResProjectName(project);
+        resMngRecordInfo.setResWeekStartDate(year + "-" + timeStart);
+        resMngRecordInfo.setResWeekEndDate(year + "-" + timeEnd);
         resMngRecordInfo.setDepartment(department);
-        resMngRecordInfo.setGroup_name(group);
-        resMngRecordInfo.setUser_info_name(userName);
-        resMngRecordInfo.setRes_work_pack_name(pkgName);
-        List<CafCodeInfo> codeList = new ArrayList<CafCodeInfo>();
-        jsonList = EfficientService.getCodeLineInfo(queryType, resMngRecordInfo);
-        return jsonList;
+        resMngRecordInfo.setGroupName(group);
+        resMngRecordInfo.setUserInfoName(userName);
+        resMngRecordInfo.setResWorkPackName(pkgName);
+        jsonObjects = efficientService.getCodeLineInfo(queryType, resMngRecordInfo);
+        return jsonObjects;
     }
 
     /**
@@ -134,7 +137,7 @@ public class EfficientController {
             pageSize = Integer.valueOf(httpServletRequest.getParameter("rows"));
             pageNum = Integer.valueOf(httpServletRequest.getParameter("page"));
         }
-        er = EfficientService.getQualification(dept, group, username, type, pageSize, pageNum);
+        er = efficientService.getQualification(dept, group, username, type, pageSize, pageNum);
         return er;
     }
 
@@ -166,7 +169,7 @@ public class EfficientController {
         String qualFileNum = httpServletRequest.getParameter("qualFileNum");
         Qualification qualification = new Qualification(userName, group, department, curQual, preQual, q1Qual, q2Qual, q3Qual,
                 q4Qual, q1TrueQual, q2TrueQual, q3TrueQual, q4TrueQual, qualFileName, qualFileNum);
-        String message = EfficientService.updateQualification(qualification);
+        String message = efficientService.updateQualification(qualification);
         return message;
     }
 }

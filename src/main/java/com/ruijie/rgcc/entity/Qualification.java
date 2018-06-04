@@ -5,6 +5,7 @@ package com.ruijie.rgcc.entity;
  * <p>Copyright: Copyright (c) 2018 </p>
  * <p>Company: Ruijie Co., Ltd. </p>
  * <p>Create Time: 2018/5/24 </p>
+ *
  * @author zhengchengbin
  * <p>Update Time: </p>
  * <p>Updater: </p>
