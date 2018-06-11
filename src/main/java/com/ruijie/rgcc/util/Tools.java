@@ -37,10 +37,6 @@ public class Tools {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (flag) {
-            return true;
-        } else {
-            return false;
-        }
+        return flag;
     }
 }

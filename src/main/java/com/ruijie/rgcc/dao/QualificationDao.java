@@ -72,9 +72,9 @@ public interface QualificationDao {
      * <p>Create Time: 2018/6/10 </p>
      * @author zhengchengbin
      * @param qualification
-     * @return boolean
+     * @return int
      * @throws
      */
-    boolean updateQualification(Qualification qualification);
+    int updateQualification(Qualification qualification);
 
 }

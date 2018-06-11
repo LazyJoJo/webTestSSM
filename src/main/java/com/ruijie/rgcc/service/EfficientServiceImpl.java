@@ -5,6 +5,9 @@ import com.ruijie.rgcc.entity.Qualification;
 import com.ruijie.rgcc.entity.ResMngRecordInfo;
 import com.ruijie.rgcc.entity.SvnMessage;
 import com.ruijie.rgcc.entity.EasyuiResult;
+import com.ruijie.rgcc.entity.DepartmentEnum;
+import com.ruijie.rgcc.entity.GroupEnum;
+import com.ruijie.rgcc.entity.ClassifyEnum;
 import com.ruijie.rgcc.inter.EfficientService;
 import com.ruijie.rgcc.service.dao.EfficientServiceDao;
 import com.ruijie.rgcc.util.Tools;
@@ -13,10 +16,12 @@ import org.springframework.stereotype.Service;
 import net.sf.json.JSONObject;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>Title:                            </p>
@@ -37,10 +42,28 @@ public class EfficientServiceImpl implements EfficientService {
      */
     @Resource
     private EfficientServiceDao efficientServiceDao;
+
+    /**
+     * enum
+     */
+    @Resource
+    private ClassifyEnum classifyEnum;
+
+    @Resource
+    private GroupEnum groupEnum ;
+
+    @Resource
+    private DepartmentEnum departmentEnum ;
+
     /**
      * 日志对象
      */
     private static Logger logger = Logger.getLogger(EfficientServiceImpl.class);
+
+    /**
+     *  月份常量
+     */
+    private static final int MONTH = 12;
 
     /**
      * <p>Description: 返回所有的资质信息</p>
@@ -81,13 +104,12 @@ public class EfficientServiceImpl implements EfficientService {
         String timeStart = resMngRecordInfo.getResWeekStartDate();
         String timeEnd = resMngRecordInfo.getResWeekEndDate();
         cafCodeInfos = efficientServiceDao.getCodeInfoByTime(timeStart, timeEnd);
-
-        if (queryType.equalsIgnoreCase("pkg")) {
+        if (queryType.equalsIgnoreCase(classifyEnum.PACKAGE.getName())) {
             jsonObjects = this.getCodeLineInfoByPkg(cafCodeInfos, resMngRecordInfo);
-        } else if (queryType.equalsIgnoreCase("group")) {
+        } else if (queryType.equalsIgnoreCase(classifyEnum.GROUP.getName())) {
             jsonObjects = this.getCodeLineInfoByPkg(cafCodeInfos, resMngRecordInfo);
             jsonObjects = this.getDeptCodeLineInfoByGroup(jsonObjects);
-        } else if (queryType.equalsIgnoreCase("dept")) {
+        } else if (queryType.equalsIgnoreCase(classifyEnum.DEPARTMENT.getName())) {
             jsonObjects = this.getCodeLineInfoByPkg(cafCodeInfos, resMngRecordInfo);
             jsonObjects = this.getDeptCodeLineInfoByGroup(jsonObjects);
             jsonObjects = this.getDeptCodeLineInfoByDept(jsonObjects);
@@ -106,6 +128,7 @@ public class EfficientServiceImpl implements EfficientService {
     public List<JSONObject> getCodeLineInfoByPkg(List<CafCodeInfo> cafCodeInfos, ResMngRecordInfo resMngRecordInfo) {
         List<JSONObject> jsonObjects = new ArrayList<JSONObject>();
         Set<String> pkgs = new HashSet<String>();
+
         for (CafCodeInfo cafCodeInfo : cafCodeInfos) {
             pkgs.add(cafCodeInfo.getPkg());
         }
@@ -114,10 +137,10 @@ public class EfficientServiceImpl implements EfficientService {
             int totalAddCodeLine = 0;
             int totalDelCodeLine = 0;
             int totalCodeLine = 0;
-            int[] monthAddData = new int[12];
-            int[] monthDelData = new int[12];
-            int[] monthTotalData = new int[12];
-            for (int i = 0; i < 12; i++) {
+            int[] monthAddData = new int[MONTH];
+            int[] monthDelData = new int[MONTH];
+            int[] monthTotalData = new int[MONTH];
+            for (int i = 0; i < MONTH; i++) {
                 monthAddData[i] = 0;
                 monthDelData[i] = 0;
                 monthTotalData[i] = 0;
@@ -133,10 +156,7 @@ public class EfficientServiceImpl implements EfficientService {
                 int addCodeLine = Integer.valueOf(cafCodeInfo.getAddcodeline()).intValue();
                 int delCodeLine = Integer.valueOf(cafCodeInfo.getDelcodeline()).intValue();
                 String applyTime = cafCodeInfo.getDate();
-                if (addCodeLine > 5000 || delCodeLine > 5000) {
-                    continue;
-                }
-                for (int i = 0; i < 12; i++) {
+                for (int i = 0; i < MONTH; i++) {
                     String timeStart = resMngRecordInfo.getResWeekStartDate();
                     String timeEnd = resMngRecordInfo.getResWeekEndDate();
                     if (Tools.timeCompare(applyTime, timeStart, timeEnd)) {
@@ -173,18 +193,17 @@ public class EfficientServiceImpl implements EfficientService {
      */
     public List<JSONObject> getDeptCodeLineInfoByGroup(List<JSONObject> jsonObjects) {
         List<JSONObject> groupJsonObjects = new ArrayList<JSONObject>();
-        String[] GroupList = {"管理专业组", "品质专业组", "系统专业1组", "系统专业2组", "认证专业组", "二层组", "安全专业组",
-                "应用专业组", "三层专业组", "出口专业组", "DC专业组", "IGP专业组", "EGP专业组", "MCAST专业组", "MPLS专业组"};
-        String GroupPkgMap = "{\"管理专业组\":\"mng#oam\",\"品质专业组\":\"dev#ras\",\"系统专业1组\":\"bsp\"," +
-                "\"系统专业2组\":\"utils\",\"认证专业组\":\"security\",\"二层组\":\"lsm#bridge\"," +
-                "\"安全专业组\":\"fw#ipfix#net_def\",\"应用专业组\":\"app\",\"三层专业组\":\"ip#net\"," +
-                "\"出口专业组\":\"vpn#UnifyManage#sslvpn\",\"DC专业组\":\"dc\",\"IGP专业组\":\"libpub\"," +
-                "\"EGP专业组\":\"ucast \",\"MCAST专业组\":\"MCAST#openflow\",\"MPLS专业组\":\"MPLS\"}";
-        JSONObject GroupPkgJson = JSONObject.fromObject(GroupPkgMap);
-        for (String groupName : GroupList) {
+        List<String> groups = new ArrayList<String>();
+        Map<String, String> groupPkgMap = new HashMap<String, String>();
+        for (GroupEnum group: groupEnum.values()){
+            groups.add(group.getKey());
+            groupPkgMap.put(group.getKey(),group.getValue());
+        }
+        JSONObject GroupPkgJson = JSONObject.fromObject(groupPkgMap);
+        for (String groupName : groups) {
             int groupCodeLine = 0;
-            int[] groupMonthTotalData = new int[12];
-            for (int i = 0; i < 12; i++) {
+            int[] groupMonthTotalData = new int[MONTH];
+            for (int i = 0; i < MONTH; i++) {
                 groupMonthTotalData[i] = 0;
             }
             String[] groupPkgTmp = GroupPkgJson.getString(groupName).split("#");
@@ -194,7 +213,7 @@ public class EfficientServiceImpl implements EfficientService {
                     if (pkgName.equals(pkgNameTmp.toUpperCase())) {
                         String codeLineNum = jsonObject.getString("codenum");
                         groupCodeLine += Integer.valueOf(codeLineNum).intValue();
-                        for (int i = 0; i < 12; i++) {
+                        for (int i = 0; i < MONTH; i++) {
                             String monthName = "monthtotal" + (i + 1);
                             groupMonthTotalData[i] += Integer.valueOf(jsonObject.getString(monthName)).intValue();
                         }
@@ -224,13 +243,17 @@ public class EfficientServiceImpl implements EfficientService {
     public List<JSONObject> getDeptCodeLineInfoByDept(List<JSONObject> jsonObjects) {
 
         List<JSONObject> deptJsonObjects = new ArrayList<JSONObject>();
-        String[] deptList = {"平台一部", "平台四部", "平台五部", "平台六部"};
-        String groupPkgMap = "{\"平台一部\":\"管理专业组#品质专业组#系统专业1组#系统专业2组\",\"平台四部\":\"认证专业组#二层组#安全专业组\",\"平台五部\":\"应用专业组#三层专业组#出口专业组\",\"平台六部\":\"DC专业组#IGP专业组#EGP专业组#MCAST专业组#MPLS专业组\"}";
-        JSONObject groupPkgJson = JSONObject.fromObject(groupPkgMap);
-        for (String groupName : deptList) {
+        List<String> departments = new ArrayList<String>();
+        Map<String,String> departmentPkgMap = new HashMap<String, String>();
+        for(DepartmentEnum department : departmentEnum.values()){
+            departments.add(department.getKey());
+            departmentPkgMap.put(department.getKey(),department.getValue());
+        }
+        JSONObject groupPkgJson = JSONObject.fromObject(departmentPkgMap);
+        for (String groupName : departments) {
             int groupCodeLine = 0;
-            int[] groupMonthTotalData = new int[12];
-            for (int i = 0; i < 12; i++) {
+            int[] groupMonthTotalData = new int[MONTH];
+            for (int i = 0; i < MONTH; i++) {
                 groupMonthTotalData[i] = 0;
             }
             String[] groupPkgTmp = groupPkgJson.getString(groupName).split("#");
@@ -240,7 +263,7 @@ public class EfficientServiceImpl implements EfficientService {
                     if (pkgName.equals(pkgNameTmp)) {
                         String codeLineNum = jsonObject.getString("codenum");
                         groupCodeLine += Integer.valueOf(codeLineNum).intValue();
-                        for (int i = 0; i < 12; i++) {
+                        for (int i = 0; i < MONTH; i++) {
                             String monthName = "monthtotal" + (i + 1);
                             groupMonthTotalData[i] += Integer.valueOf(jsonObject.getString(monthName)).intValue();
                         }
@@ -250,7 +273,7 @@ public class EfficientServiceImpl implements EfficientService {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("pkgname", groupName);
             jsonObject.put("codenum", groupCodeLine);
-            for (int i = 0; i < 12; i++) {
+            for (int i = 0; i < MONTH; i++) {
                 String monthName = "monthtotal" + (i + 1);
                 jsonObject.put(monthName, groupMonthTotalData[i]);
             }
@@ -383,9 +406,9 @@ public class EfficientServiceImpl implements EfficientService {
     public String updateQualification(Qualification qualification) {
         boolean message = efficientServiceDao.updateQualification(qualification);
         if (message) {
-            return "success";
+            return "update success";
         }
-        return "error";
+        return "update error";
     }
 
 }

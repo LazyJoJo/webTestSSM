@@ -181,7 +181,12 @@ public class EfficientServiceDao {
      * @throws
      */
     public boolean updateQualification(Qualification qualification) {
-        return qualificationDao.updateQualification(qualification);
+
+        int count = qualificationDao.updateQualification(qualification);
+        if(count>0){
+            return true;
+        }
+        return false;
     }
 
 }

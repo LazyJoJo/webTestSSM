@@ -126,7 +126,7 @@ public class EfficientController {
     @RequestMapping(value = "/getQualification", method = RequestMethod.POST)
     @ResponseBody
     public EasyuiResult getQualification(HttpServletRequest httpServletRequest) {
-        EasyuiResult er = null;
+        EasyuiResult easyuiResult = null;
         String dept = httpServletRequest.getParameter("dept");
         String group = httpServletRequest.getParameter("group");
         String username = httpServletRequest.getParameter("username");
@@ -137,38 +137,21 @@ public class EfficientController {
             pageSize = Integer.valueOf(httpServletRequest.getParameter("rows"));
             pageNum = Integer.valueOf(httpServletRequest.getParameter("page"));
         }
-        er = efficientService.getQualification(dept, group, username, type, pageSize, pageNum);
-        return er;
+        easyuiResult = efficientService.getQualification(dept, group, username, type, pageSize, pageNum);
+        return easyuiResult;
     }
 
     /**
      * <p>Description: </p>
      * <p>Create Time: 2018/6/1 </p>
      * @author zhengchengbin
-     * @param httpServletRequest
+     * @param httpServletRequest , qualification
      * @return java.lang.String
      * @throws
      */
     @RequestMapping(value = "/updateQualification", method = RequestMethod.POST)
     @ResponseBody
-    public String updateQualification(HttpServletRequest httpServletRequest) {
-        String userName = httpServletRequest.getParameter("userName");
-        String group = httpServletRequest.getParameter("group");
-        String department = httpServletRequest.getParameter("department");
-        String q1Qual = httpServletRequest.getParameter("q1Qual");
-        String q2Qual = httpServletRequest.getParameter("q2Qual");
-        String q3Qual = httpServletRequest.getParameter("q3Qual");
-        String q4Qual = httpServletRequest.getParameter("q4Qual");
-        String q1TrueQual = httpServletRequest.getParameter("q1TrueQual");
-        String q2TrueQual = httpServletRequest.getParameter("q2TrueQual");
-        String q3TrueQual = httpServletRequest.getParameter("q3TrueQual");
-        String q4TrueQual = httpServletRequest.getParameter("q4TrueQual");
-        String curQual = httpServletRequest.getParameter("curQual");
-        String preQual = httpServletRequest.getParameter("preQual");
-        String qualFileName = httpServletRequest.getParameter("qualFileName");
-        String qualFileNum = httpServletRequest.getParameter("qualFileNum");
-        Qualification qualification = new Qualification(userName, group, department, curQual, preQual, q1Qual, q2Qual, q3Qual,
-                q4Qual, q1TrueQual, q2TrueQual, q3TrueQual, q4TrueQual, qualFileName, qualFileNum);
+    public String updateQualification(HttpServletRequest httpServletRequest , Qualification qualification) {
         String message = efficientService.updateQualification(qualification);
         return message;
     }
